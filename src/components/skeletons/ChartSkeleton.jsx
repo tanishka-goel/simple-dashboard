@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../../css/skeleton.css";
+import { ThemeContext } from "../../context/ThemeProvider";
 
 export const ChartSkeleton = () => {
+  const {theme} = useContext(ThemeContext)
   return (
-    <div className="charts">
+    <div className={`charts ${theme}`}>
       <div className="chart-div1 skeleton">
         <div className="circle skeleton2">
 

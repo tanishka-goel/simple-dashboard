@@ -54,7 +54,9 @@ const Settings = () => {
       key: "fullname",
       label: "Full Name",
       cell: (row) => (
-        <Link  target="_blank" to={`/user/${row.id}`}>
+        <Link 
+        style={{ color: theme === "light" ? "#0F172A" : "#e8ebf0",}}
+        target="_blank" to={`/user/${row.id}`}>
           {" "}
           {[row?.firstName, row?.lastName, row?.maidenName]
             .filter(Boolean)

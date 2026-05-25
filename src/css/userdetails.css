@@ -1,0 +1,156 @@
+.main-user-div {
+  padding: 30px;
+  border-radius: 15px;
+  /* background-color: #f8f9fa; */
+}
+
+.main-user-div h1 {
+  margin-bottom: 5px;
+}
+
+.full-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-deets {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-deets p {
+  margin: 0 0 10px;
+}
+
+.user-role{
+    background: linear-gradient(
+    135deg,
+    rgba(151, 20, 75, 0.12),
+    rgba(60, 89, 220, 0.28)
+  );
+  padding: 10px;
+  width: fit-content;
+  border-radius: 15px;
+}
+
+.dark .user-role{
+    color: white;
+}
+.user-fullname{
+    font-weight: bold;
+    font-size: larger;
+}
+
+.cd {
+  background-color: white;
+  padding: 15px;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow:
+  0 10px 30px rgba(0,0,0,0.08),
+  0 2px 8px rgba(0,0,0,0.04);
+  transition: transform 0.3s ease-in-out;
+}
+
+.dark .cd{
+     background: linear-gradient(
+    135deg,
+    rgba(20, 62, 151, 0.12),
+    rgba(60, 100, 220, 0.18)
+  );
+}
+
+.cd:hover{
+    transform: scale(1.02);
+}
+
+.profile {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  
+}
+
+.profile img {
+ width: 140px;
+  height: 140px;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+}
+
+.personal-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 16px;
+  padding: 30px 15px;
+}
+
+.deets{
+    margin-bottom: 10px;
+   background-color: #edeeef;
+    padding: 12px;
+    border-radius: 15px;
+}
+
+.dark .deets{
+background: linear-gradient(
+    135deg,
+    rgba(20, 62, 151, 0.12),
+    rgba(60, 100, 220, 0.18)
+  );
+}
+
+.info-header{
+     font-size: medium;
+  display: block;        
+  color: gray;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+    
+}
+
+.dark .info-header{
+    color: rgb(201, 197, 197);
+}
+
+
+.address{
+     display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 16px;
+  padding: 30px 15px;
+}
+
+@media (max-width:768px) {
+    .personal-info{
+        grid-template-columns: 1fr;
+
+    }
+    .address{
+        grid-template-columns: 1fr;
+    }
+
+    .profile{
+        display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    }
+
+    .pfp{
+        align-content: center;
+    }
+}
