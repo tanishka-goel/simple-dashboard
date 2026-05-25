@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import "../css/addusermodal.css";
+import "../../css/addusermodal.css";
 import { X } from "lucide-react";
-import { useAddUsers } from "../queries/users.query";
+import { useAddUsers } from "../../queries/users.query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { userSchema } from "../validation/userSchema";
+import { userSchema } from "../../validation/userSchema";
 import { ToastContainer, toast } from "react-toastify";
-import { ThemeContext } from "../context/ThemeProvider";
+import { ThemeContext } from "../../context/ThemeProvider";
 
 export const AddUserModal = ({ closeModal }) => {
   const {theme} = useContext(ThemeContext)
@@ -42,10 +42,10 @@ export const AddUserModal = ({ closeModal }) => {
 
     closeModal();
     toast.success("Form Submitted Successfully", {
-      autoClose: 3000,
+      autoClose: 2000,
       closeOnClick: true,
       pauseOnHover: true,
-      theme: "dark",
+      theme: "light",
     });
   };
 

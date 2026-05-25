@@ -7,6 +7,7 @@ import TableSkeleton from "../components/skeletons/TableSkeleton";
 import StatCardSkeleton from "../components/skeletons/StatCardSkeleton";
 import { Login } from "../pages/Login";
 import ProtectedRoutes from "./ProtectedRoutes";
+import UserDetails from "../pages/UserDetails";
 
 const LazyDashboard = React.lazy(() => import("../pages/Dashboard"));
 const LazySettings = React.lazy(() => import("../pages/Settings"));
@@ -29,6 +30,7 @@ const AppRoutes = () => {
               }
             >
                <Route path="/me" element={<Suspense><LazyProfile/></Suspense>}/>
+               <Route path="/user/:id" element={<UserDetails/>}/>
               <Route
                 path="dashboard"
                 element={

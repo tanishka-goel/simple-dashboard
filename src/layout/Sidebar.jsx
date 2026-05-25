@@ -16,8 +16,8 @@ import { logout } from "../features/authSlice";
 
 const adminpages = [
   { name: "Dashboard", route: "/dashboard", icon: <LayoutDashboard /> },
-  { name: "Profile", route: "/me", icon: <User /> },
   { name: "Settings", route: "/settings", icon: <Settings /> },
+  { name: "Profile", route: "/me", icon: <User /> },
 ];
 
 const userpages = [
@@ -65,24 +65,16 @@ const Sidebar = ({ isCollapsed, onToggle, onMobileClose, isMobile }) => {
       </div>
 
       <div>
-
         {!isMobile && (
-<button className="sidebar-toggle-btn" onClick={onToggle}>
-        {isCollapsed  ? <ChevronRight /> : <ChevronLeft />}
-      </button>
+          <button className="sidebar-toggle-btn" onClick={onToggle}>
+            {isCollapsed ? <ChevronRight /> : <ChevronLeft />}
+          </button>
         )}
- 
 
-      <button
-        onClick={handleLogout}
-        className="sidebar-logout-btn"
-       
-      >
-        <LogOut />
-      </button>
+        <button onClick={handleLogout} className="sidebar-logout-btn">
+          <LogOut />
+        </button>
       </div>
-
-     
     </div>
   );
 };

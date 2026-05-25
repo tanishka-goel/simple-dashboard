@@ -69,6 +69,11 @@ border: none;
 border-radius: 25px;
 }
 
+.dark .delete-user-btn{
+  /* background: linear-gradient(45deg, #971435, #061536); */
+  background-color: transparent;
+}
+
 .delbtn{
     color: rgb(216, 14, 55);
     background-color: rgb(254, 253, 253);
@@ -76,11 +81,22 @@ border-radius: 25px;
     border-radius: 25px;
 }
 
+.dark .delbtn{
+   color: white;
+  background-color: transparent;
+}
+
 .delbtn:hover{
     color: red;
     background-color: rgb(243, 238, 238);
 }
 
+.dark .delbtn:hover{
+  color: white;
+   background: linear-gradient(45deg, #971435, #061536);
+
+
+}
 
 .user-grid {
   display: grid;

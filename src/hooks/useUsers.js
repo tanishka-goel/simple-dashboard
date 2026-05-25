@@ -12,18 +12,15 @@ export const useUsers = () => {
     const fetchUsers = async () => {
       try {
         const res = await getProducts();
-        // console.log("res on dashbaord", res);
         setUsers(res.products);
         setIsLoading(false);
       } catch (error) {
         setError(error);
-        console.log("Error fetching data", error);
         setIsLoading(false);
       }
     };
     fetchUsers();
   }, []);
 
-//   console.log("data", users);
 return {users, isLoading, error}
 };

@@ -8,7 +8,7 @@ export const userSchema = z.object({
 
   age: z.number().int("Age must be a whole number"),
 
-  email: z.string().email("Invalid email format"),
+  email: z.string().email("Email is required"),
 
   phone: z
     .string()

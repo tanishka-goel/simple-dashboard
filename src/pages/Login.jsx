@@ -16,12 +16,11 @@ export const Login = () => {
     (state) => state.auth,
   );
 
-  console.log(user?.firstName);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const from = location.state?.from?.pathname || "/dashboard";
+  const from = "/dashboard";
 
   const togglePassword = () => {
     setShowPassword(!showPassword);

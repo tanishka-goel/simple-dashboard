@@ -25,6 +25,5 @@ export async function deleteUser(id) {
   }
 
   const response = await BaseApi.delete(`/users/${id}`)
-  console.log("deleted user with id", id)
   return response.data
 }

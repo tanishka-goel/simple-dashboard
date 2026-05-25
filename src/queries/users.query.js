@@ -25,7 +25,6 @@ export const useAddUsers = () => {
       })
     },
     onError: (err) => {
-      console.log("Error in user addition : ", err);
       toast.error("Failed to add user",{
         autoClose:3000
       })

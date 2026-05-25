@@ -4,27 +4,31 @@ import { useUsesrs, useDeleteUsers } from "../queries/users.query";
 import Search from "../components/Search";
 import Table from "../components/Table";
 import { Edit, Trash, Trash2 } from "lucide-react";
-import { AddUserModal } from "../components/AddUserModal";
+import { AddUserModal } from "../components/modals/AddUserModal";
 import { ThemeContext } from "../context/ThemeProvider";
 import UserCard from "../components/UserCard";
 import { usePagination } from "../hooks/usePagination";
 import TableSkeleton from "../components/skeletons/TableSkeleton";
 import { FilterSkeleton } from "../components/skeletons/FilterSkeleton";
 import { useSort } from "../hooks/useSort";
+import { Link } from "react-router-dom";
+import DeleteModal from "../components/modals/DeleteModal";
 
 const Settings = () => {
   const { data: users, isLoading: usersLoading } = useUsesrs();
   const { mutate: deleteUser } = useDeleteUsers();
   const [searchTerm, setSearchTerm] = useState("");
-  const len = users?.length;
+  const [openDeleteModal, setOpenDeleteModal] = useState(null);
   const [userModal, setUserModal] = useState(false);
   const { theme } = useContext(ThemeContext);
 
   const handleDelete = (row) => {
     deleteUser(row.id);
+    setOpenDeleteModal(null)
   };
 
-  const notAdmins = users?.filter((user)=>user?.role!=="admin")
+  const notAdmins = users?.filter((user) => user?.role !== "admin");
+  const len = notAdmins?.length;
 
   const filteredUsers = useMemo(() => {
     return notAdmins?.filter((user) => {
@@ -39,7 +43,7 @@ const Settings = () => {
     });
   }, [searchTerm, users]);
 
-   const { sortedVal, setSortedVal, sortedData } = useSort(filteredUsers)
+  const { sortedVal, setSortedVal, sortedData } = useSort(filteredUsers);
 
   const { currpage, totalPages, nextPage, prevPage, currdata, gotoPage } =
     usePagination(sortedData, 10);
@@ -49,10 +53,14 @@ const Settings = () => {
     {
       key: "fullname",
       label: "Full Name",
-      cell: (row) =>
-        [row?.firstName, row?.lastName, row?.maidenName]
-          .filter(Boolean)
-          .join(" "),
+      cell: (row) => (
+        <Link  target="_blank" to={`/user/${row.id}`}>
+          {" "}
+          {[row?.firstName, row?.lastName, row?.maidenName]
+            .filter(Boolean)
+            .join(" ")}
+        </Link>
+      ),
     },
     { key: "age", label: "Age", cell: (row) => `${row?.age}` },
     { key: "email", label: "Email", cell: (row) => `${row?.email}` },
@@ -72,19 +80,20 @@ const Settings = () => {
       key: "actions",
       label: "Actions",
       cell: (row) => (
-        <button className="btn" onClick={() => handleDelete(row)}>
+        <button className={`btn delete-user-btn ${theme}`} onClick={() => setOpenDeleteModal(row)}>
           <Trash2 className="delbtn" size={15} />
         </button>
       ),
     },
   ];
 
-  if (usersLoading) return(
-    <div>
-      <FilterSkeleton/>
-      <TableSkeleton/>
-    </div>
-  );
+  if (usersLoading)
+    return (
+      <div>
+        <FilterSkeleton />
+        <TableSkeleton />
+      </div>
+    );
 
   return (
     <div className="user-table">
@@ -92,7 +101,10 @@ const Settings = () => {
         <p style={{ color: "#000", fontSize: "20px" }}>Total Users : {len}</p>
         <div className="rfb2">
           <div className="sort-div">
-            <select value={sortedVal} onChange={(e)=>setSortedVal(e.target.value)}>
+            <select
+              value={sortedVal}
+              onChange={(e) => setSortedVal(e.target.value)}
+            >
               <option value="all">All</option>
               <option value="nameatoz">Name: A to Z</option>
               <option value="nameztoa">Name: Z to A</option>
@@ -104,10 +116,7 @@ const Settings = () => {
               <option value="companyztoa">Company: Z to A</option>
             </select>
           </div>
-          {/* <div>
-            <button className="btn">Cards</button>
-            <button className="btn">Table</button>
-          </div> */}
+
           <Search onSearchChange={setSearchTerm} />
           <button className="btn addbtn" onClick={() => setUserModal(true)}>
             Add Users
@@ -117,18 +126,18 @@ const Settings = () => {
         {userModal && <AddUserModal closeModal={() => setUserModal(false)} />}
       </div>
 
-      {/* <div className="user-grid">
-{filteredUsers.map((fu) => (
-        <UserCard user={fu} />
-      ))}
-</div>
-       */}
-
-       {/* <TableSkeleton/> */}
-
       <div className="table-div">
         <Table data={currdata} headers={headers} />
       </div>
+
+
+      {openDeleteModal && (
+        <DeleteModal
+        user={openDeleteModal}
+          onConfirm={()=>handleDelete(openDeleteModal)}
+          onClose={() => setOpenDeleteModal(null)}
+        />
+      )}
 
       <div className="page-btn">
         <button
