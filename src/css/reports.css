@@ -1,0 +1,128 @@
+.gender-cards{
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 10px;
+}
+
+.gc{
+    height: 100px;
+    border-radius: 35px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+   
+}
+
+.sort-div select{
+  padding: 10px;
+  border-radius: 30px;
+}
+
+.count{
+ margin-top: 25px ;
+}
+
+.report-filter-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background-color: #e8ebf0;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.user-table{
+    padding: 10px;
+}
+
+.report-filter-bar input {
+  padding: 10px;
+  border-radius: 25px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #d1d5db;
+}
+
+.addbtn{
+    background-color: green;
+    padding: 10px;
+    color: white;
+}
+.rfb2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.table-div{
+    overflow: scroll;
+    display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.btn{
+border: none;
+border-radius: 25px;
+}
+
+.delbtn{
+    color: rgb(216, 14, 55);
+    background-color: rgb(254, 253, 253);
+    padding: 5px;
+    border-radius: 25px;
+}
+
+.delbtn:hover{
+    color: red;
+    background-color: rgb(243, 238, 238);
+}
+
+
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .report-filter-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .rfb2 {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .rfb2 input {
+    width: 100%;
+  }
+
+  .addbtn {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .table-div {
+    overflow-x: auto;
+    width: 100%;
+    padding: 5px;
+    justify-content: flex-start;
+    display: block;
+  }
+
+  .user-table {
+    padding: 8px;
+  }
+}
+

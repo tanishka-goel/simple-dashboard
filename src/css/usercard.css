@@ -1,0 +1,13 @@
+.user-card {
+  padding: 15px;
+  background-color: rgb(240, 240, 245);
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 3px 3px 3px gray;
+}
+
+.name {
+  font-size: 1.4rem;
+
+  padding: 10px;
+}

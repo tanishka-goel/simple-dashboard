@@ -1,0 +1,159 @@
+.main-div {
+  padding: 10px;
+  padding-bottom: 20px;
+}
+
+
+.all-fields {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 20px;
+  align-items: center;
+  padding: 15px 100px;
+  background-color: rgb(235, 235, 238);
+  border-radius: 15px;
+  /* margin-left: 70px; */
+}
+
+.dark .all-fields {
+  background: linear-gradient(45deg, #061536, #0e2d71, #061536);
+  border-left: 2px solid #2563eb;
+  border-right: 2px solid #2563eb;
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 190px;
+}
+
+.filter-field label {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+
+.light .filter-field label {
+  color: #64748b;
+}
+
+.dark .filter-field label {
+  color: #94a3b8;
+}
+
+.filter-field select {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+.filter-field input {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.filter-field.search-field {
+  min-width: 200px;
+}
+
+/* .full-w {
+  min-width: 100vh;
+} */
+
+.search-input {
+  width: 90%;
+}
+
+.loading-skel{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.eight {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-auto-rows: minmax(120px, auto);
+  gap: 16px;
+  padding: 26px;
+  margin-top: 10px;
+}
+
+.hover {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .main-div {
+    padding: 8px;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+  }
+
+  .all-fields {
+    flex-direction: column;
+    padding: 12px;
+    gap: 12px;
+    width: 100%;
+
+  }
+
+  .filter-field {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .filter-field.search-field {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .eight {
+    padding: 3px;
+    grid-template-columns: 1fr;
+    margin-top: 10px;
+  }
+
+  .twobythree {
+    grid-template-columns: 1fr;
+    height: auto;
+    grid-template-rows: none;
+  }
+}
+
+.page-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px;
+  padding: 15px;
+}
+
+.buttons {
+  background-color: rgb(7, 7, 55);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.buttons:disabled {
+  background-color: #e8ebf0;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: not-allowed;
+}

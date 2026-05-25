@@ -1,0 +1,33 @@
+.table {
+  /* border: 1px solid black; */
+  border-collapse: collapse;
+
+  width: 100%;
+}
+
+.table,
+.tdata {
+  padding: 15px;
+}
+
+.thead {
+  padding: 10px;
+}
+
+.trow {
+  
+  transition: transform 0.3s ease-in-out;
+}
+.tablehead {
+  padding: 10px;
+}
+
+.trow:hover{
+    transform: scale(1.02);
+    background-color: #e8ebf0;
+}
+
+.dark .trow:hover{
+  /* background-color: #0e2d71; */
+  background: linear-gradient(45deg,#061536, #0e2d71, #061536);
+}
