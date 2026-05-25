@@ -1,7 +1,8 @@
 import axios from "axios";
+import BaseApi from "./base.api";
 
 export async function getUsers() {
-  const response = await axios.get("https://dummyjson.com/users");
+  const response = await BaseApi.get("/users");
 
   const deletedIds = JSON.parse(localStorage.getItem("deletedIds") || "[]"); 
   const apiUsers = response.data.users.filter(u => !deletedIds.includes(u.id));
@@ -11,9 +12,7 @@ export async function getUsers() {
 }
 
 export async function addUsers(newdata) {
-  const response = await axios.post("https://dummyjson.com/users/add", newdata);
-  console.log("post api user data", newdata);
-  console.log("post api user data", response.data.users);
+  const response = await BaseApi.post("/users/add", newdata);
   return response.data;
 }
 
@@ -25,7 +24,7 @@ export async function deleteUser(id) {
     return { id, isLocal: true }; 
   }
 
-  const response = await axios.delete(`https://dummyjson.com/users/${id}`)
+  const response = await BaseApi.delete(`/users/${id}`)
   console.log("deleted user with id", id)
   return response.data
 }
