@@ -47,7 +47,7 @@ export const AddUserModal = ({ closeModal }) => {
     <div className={`modal-overlay ${theme}`}>
       <div style={{backgroundColor:theme==="light"?"":"#181b2d", color:theme==="light"?"":"#fff"}} className="modal">
         <div className="modal-header">
-          <h2>Add User</h2>
+          <h2 style={{ color:theme==="light"?"":"#fff"}}>Add User</h2>
           <button className="close-btn" onClick={closeModal}>
             <X size={16} />
           </button>

@@ -3,6 +3,14 @@
     font-size: medium;
 }
 
+.dark .form-group label{
+  color: white;
+}
+
+.dark .form-group input{
+  background: linear-gradient(45deg, #061536, #061536);
+}
+
 :root {
   --bg: #ffffff;
   --surface: #f5f4f8;
