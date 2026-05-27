@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/statcard.css";
+import "../css/components/statcard.css";
 import StatCards from "./StatCards";
 import { Users, Moon, Venus, Mars, Package } from "lucide-react";
 import { sparkData1,sparkData2,sparkData3,sparkData4 } from "../data/DummyData";

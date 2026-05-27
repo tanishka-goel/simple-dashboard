@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "../../css/addusermodal.css";
+import "../../css/modals/addusermodal.css";
 import { X } from "lucide-react";
 import { useAddUsers } from "../../queries/users.query";
 import { useForm } from "react-hook-form";

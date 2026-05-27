@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "../../css/profilemodal.css";
+import "../../css/modals/profilemodal.css";
 import { ThemeContext } from "../../context/ThemeProvider";
 
 const ProfileModal = ({ user, onClose }) => {

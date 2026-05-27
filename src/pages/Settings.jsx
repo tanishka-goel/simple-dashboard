@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from "react";
-import "../css/reports.css";
+import "../css/pages/reports.css";
 import {  useDeleteUsers, useUsers } from "../queries/users.query";
 import Search from "../components/Search";
 import Table from "../components/Table";

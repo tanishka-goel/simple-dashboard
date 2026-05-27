@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "../css/statcard.css";
+import "../css/components/statcard.css";
 import { ThemeContext } from "../context/ThemeProvider";
 import { SimpleLineChart } from "./charts/LineCharts";
 import { sparkData1 } from "../data/DummyData";

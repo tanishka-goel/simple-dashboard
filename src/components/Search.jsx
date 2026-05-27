@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useDebounce } from "../hooks/useDebounce";
-import "../css/dashboard.css"
+import "../css/pages/dashboard.css"
 import { ThemeContext } from "../context/ThemeProvider";
 
 const Search = ({ onSearchChange, placeholder="Search" }) => {

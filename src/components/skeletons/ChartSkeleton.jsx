@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "../../css/skeleton.css";
+import "../../css/components/skeleton.css";
 import { ThemeContext } from "../../context/ThemeProvider";
 
 export const ChartSkeleton = () => {

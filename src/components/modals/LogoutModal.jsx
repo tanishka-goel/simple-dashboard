@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from '../../context/ThemeProvider';
-import "../../css/logoutmodal.css"
+import "../../css/modals/logoutmodal.css"
 
 const LogoutModal = ({ user, onConfirm, onClose }) => {
    const { theme } = useContext(ThemeContext);

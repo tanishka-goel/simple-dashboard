@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeProvider";
-import "../../css/deletemodal.css";
+import "../../css/modals/deletemodal.css";
 
 const DeleteModal = ({ user, onConfirm, onClose }) => {
   const { theme } = useContext(ThemeContext);

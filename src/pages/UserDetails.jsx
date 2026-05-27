@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useUsers } from "../queries/users.query";
-import "../css/userdetails.css";
+import "../css/pages/userdetails.css";
 import { Cake, CircleUserRound, Earth, GraduationCap, Mail, MapPin, MapPinned, Phone, User } from "lucide-react";
 import { ThemeContext } from "../context/ThemeProvider";
 import ProfileSkeleton from "../components/skeletons/ProfileSkeleton";
 import { toast } from "react-toastify";
+import UserNotFound from "./UserNotFound";
 
 const UserDetails = () => {
   const { id } = useParams();
@@ -20,6 +21,8 @@ const UserDetails = () => {
     </div>
   )
 
+  if(!currUser) return <UserNotFound/>
+
   if (userError) {
   toast.error(`Error showing user details: ${userError}`);
   return <p>Error loading user details.</p>;
@@ -31,7 +34,7 @@ const UserDetails = () => {
 
       <div className="full-div">
         <div className="profile cd">
-          <img className="pfp" src={currUser?.image} alt="" />
+          <img className="pfp" src={currUser?.image || "userpfp.jpeg"} alt={currUser?.firstName+" "+ currUser.lastName || ""} />
 
           <div className="user-deets">
             <p className="user-fullname">

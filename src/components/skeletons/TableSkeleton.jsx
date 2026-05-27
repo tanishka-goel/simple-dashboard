@@ -1,5 +1,5 @@
 import React from "react";
-import "../../css/skeleton.css";
+import "../../css/components/skeleton.css";
 
 const TableSkeleton = () => {
   return (

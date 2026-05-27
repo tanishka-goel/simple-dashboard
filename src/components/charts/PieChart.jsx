@@ -8,7 +8,7 @@ import {
   Legend,
 } from "recharts";
 
-import "../../css/graphs.css";
+import "../../css/components/graphs.css";
 
 const SimplePieChart = ({ data, label, colors = [] }) => {
   return (

@@ -1,4 +1,4 @@
-import "../css/dashboard.css";
+import "../css/pages/dashboard.css";
 import { useContext, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useUsers } from "../queries/users.query";

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "../css/table.css"
+import "../css/components/table.css"
 import { ThemeContext } from "../context/ThemeProvider";
 
 const Table = ({ data, headers }) => {

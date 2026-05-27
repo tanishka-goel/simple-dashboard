@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useSelector } from "react-redux";
 import { ThemeContext } from "../context/ThemeProvider";
-import "../css/profile.css";
+import "../css/pages/profile.css";
 import ProfileSkeleton from "../components/skeletons/ProfileSkeleton";
 
 const Profile = () => {

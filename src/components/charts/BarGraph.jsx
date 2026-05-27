@@ -10,7 +10,7 @@ import {
   Label,
   ResponsiveContainer,
 } from "recharts";
-import "../../css/graphs.css";
+import "../../css/components/graphs.css";
 
 export const SimpleBarChart = ({
   data,
