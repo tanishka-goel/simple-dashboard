@@ -32,7 +32,7 @@ export const getAveragePriceByCategory = (products) => {
 
   return Object.keys(categoryMap).map((cat) => ({
     name: cat,
-    value: categoryMap[cat].total / categoryMap[cat].count,
+    value: (categoryMap[cat].total / categoryMap[cat].count).toFixed(2),
   }));
 };
 

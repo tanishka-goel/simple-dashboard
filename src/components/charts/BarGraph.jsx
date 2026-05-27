@@ -36,7 +36,7 @@ export const SimpleBarChart = ({
           />
         </YAxis>
         <Tooltip />
-        <Bar dataKey="value" fill={color} radius={[8, 8, 0, 0]} />
+        <Bar style={{backgroundColor:"red"}} dataKey="value" fill={color} radius={[8, 8, 0, 0]} />
       </BarChart>
       </ResponsiveContainer>
     </div>

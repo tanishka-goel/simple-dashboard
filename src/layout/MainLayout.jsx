@@ -6,7 +6,7 @@ import "../css/layout.css"
 import { ThemeContext } from "../context/ThemeProvider";
 
 const MainLayout = () => {
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobile, setIsMobile] = useState(false)
   const {theme} = useContext(ThemeContext)
 

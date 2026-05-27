@@ -59,7 +59,7 @@ export const chartList = ({
         label: "User Blood Groups",
         element: (
           <SimplePieChart
-            colors={CHART_COLORS.pastel}
+            colors={CHART_COLORS.default}
             label="User Blood Groups"
             data={getBlooadGroups}
           />

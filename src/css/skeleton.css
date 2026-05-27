@@ -35,6 +35,9 @@
   #374151 50%,
   #1f2937 75%
 );
+background-size: 200% 100%;
+  animation: wave 1.5s infinite linear;
+  border-radius: 8px;
 }
 
 .skeleton2 {
@@ -51,6 +54,10 @@ background: linear-gradient(
   #30384d 50%,
   #1f2433 75%
 );
+background-size: 200% 100%;
+  animation: wave 1.5s infinite linear;
+  border-radius: 8px;
+
 }
 
 .table-skel-div {
@@ -147,6 +154,45 @@ height: 3rem;
 .statcard-skel{
   height: 80%;
   width: 95%;
+}
+
+.main-div{
+  height: 80vh;
+  padding: 10px;
+ 
+}
+
+.main-deets-div{
+  height: 20vh;
+   padding: 10px;
+   display: flex;
+   justify-content: start;
+   align-items: center;
+   gap: 20px;
+}
+
+.pfp-circle{
+  height: 20vh;
+  width: 15%;
+  border-radius: 100%;
+  
+}
+
+.pfp-rec{
+  height: 15vh;
+  width: 45%;
+}
+
+.more-deets-div{
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.one{
+  height: 55vh;
+  width: 100%;
 }
 
 @keyframes wave {

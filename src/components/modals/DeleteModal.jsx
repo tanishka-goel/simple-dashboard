@@ -12,8 +12,6 @@ const DeleteModal = ({ user, onConfirm, onClose }) => {
           <strong>
             {user?.firstName} {user?.lastName}
           </strong>
-          <br />
-          User ID: {user?.id}
         </p>
 
         <div className="modal-actions">

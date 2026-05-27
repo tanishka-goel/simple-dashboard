@@ -13,6 +13,7 @@ import { FilterSkeleton } from "../components/skeletons/FilterSkeleton";
 import { useSort } from "../hooks/useSort";
 import { Link } from "react-router-dom";
 import DeleteModal from "../components/modals/DeleteModal";
+import ProfileModal from "../components/modals/ProfileModal";
 
 const Settings = () => {
   const { data: users, isLoading: usersLoading } = useUsesrs();
@@ -21,10 +22,11 @@ const Settings = () => {
   const [openDeleteModal, setOpenDeleteModal] = useState(null);
   const [userModal, setUserModal] = useState(false);
   const { theme } = useContext(ThemeContext);
+  const [openProfileModal, setOpenProfileModal] = useState(null)
 
   const handleDelete = (row) => {
     deleteUser(row.id);
-    setOpenDeleteModal(null)
+    setOpenDeleteModal(null);
   };
 
   const notAdmins = users?.filter((user) => user?.role !== "admin");
@@ -49,14 +51,31 @@ const Settings = () => {
     usePagination(sortedData, 10);
 
   const headers = [
-    { key: "id", label: "ID", cell: (row) => `${row?.id}` },
+    {
+      key: "profile",
+      label: "Profile",
+      cell: (row) => (
+        <button
+        onClick={()=>setOpenProfileModal(row)}
+          style={{
+            backgroundColor: "transparent",
+            outline: "none",
+            border: "none",
+          }}
+        >
+          <img className="pfp-user" src={row?.image || "userpfp.jpeg"} />
+        </button>
+      ),
+    },
     {
       key: "fullname",
       label: "Full Name",
       cell: (row) => (
-        <Link 
-        style={{ color: theme === "light" ? "#0F172A" : "#e8ebf0",}}
-        target="_blank" to={`/user/${row.id}`}>
+        <Link
+          style={{ color: theme === "light" ? "#0F172A" : "#e8ebf0" }}
+          target="_blank"
+          to={`/user/${row.id}`}
+        >
           {" "}
           {[row?.firstName, row?.lastName, row?.maidenName]
             .filter(Boolean)
@@ -82,7 +101,10 @@ const Settings = () => {
       key: "actions",
       label: "Actions",
       cell: (row) => (
-        <button className={`btn delete-user-btn ${theme}`} onClick={() => setOpenDeleteModal(row)}>
+        <button
+          className={`btn delete-user-btn ${theme}`}
+          onClick={() => setOpenDeleteModal(row)}
+        >
           <Trash2 className="delbtn" size={15} />
         </button>
       ),
@@ -100,12 +122,20 @@ const Settings = () => {
   return (
     <div className="user-table">
       <div className={`report-filter-bar ${theme}`}>
-        <p style={{ color: "#000", fontSize: "20px" }}>Total Users : {len}</p>
+        <p
+          style={{
+            color: theme === "light" ? "#000" : "#efecec",
+            fontSize: "20px",
+          }}
+        >
+          Total Users : {len}
+        </p>
         <div className="rfb2">
           <div className="sort-div">
             <select
               value={sortedVal}
               onChange={(e) => setSortedVal(e.target.value)}
+              className="sort-func"
             >
               <option value="all">All</option>
               <option value="nameatoz">Name: A to Z</option>
@@ -132,11 +162,17 @@ const Settings = () => {
         <Table data={currdata} headers={headers} />
       </div>
 
+      {openProfileModal && (
+        <ProfileModal
+        user={openProfileModal}
+        onClose={()=>setOpenProfileModal(null)}
+        />
+      )}
 
       {openDeleteModal && (
         <DeleteModal
-        user={openDeleteModal}
-          onConfirm={()=>handleDelete(openDeleteModal)}
+          user={openDeleteModal}
+          onConfirm={() => handleDelete(openDeleteModal)}
           onClose={() => setOpenDeleteModal(null)}
         />
       )}

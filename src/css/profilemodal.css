@@ -1,0 +1,90 @@
+.modal {
+  width: 280px;
+  min-height: 200px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 32px 24px;
+
+  border-radius: 26px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.18),
+    0 10px 30px rgba(0, 0, 0, 0.08);
+
+  position: relative;
+
+  animation: modalPop 0.3s ease;
+}
+
+.dark .modal {
+  background: linear-gradient(
+    to bottom,
+    #05183e,
+    #183d8b,
+    #133678
+  );
+
+  color: white;
+}
+
+.pfp-section {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 25px;
+}
+
+.pfp-section h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.close-pfp-btn {
+  width: 34px;
+  height: 34px;
+
+  border: none;
+  outline: none;
+
+  border-radius: 50%;
+
+  background: rgba(255, 0, 0, 0.15);
+
+  color: red;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.close-pfp-btn:hover {
+  transform: rotate(90deg);
+  background: red;
+  color: white;
+}
+
+.modal img {
+  width: 140px;
+  height: 140px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  margin-top: 10px;
+  margin-bottom: 28px;
+
+  border: 5px solid rgba(90, 130, 255, 0.2);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.15);
+}
+

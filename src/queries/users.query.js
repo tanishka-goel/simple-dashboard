@@ -17,7 +17,7 @@ export const useAddUsers = () => {
       const existingData = JSON.parse(
         localStorage.getItem("addedUsers") || "[]",
       );
-      const updatedData = [...existingData, newUser];
+      const updatedData = [newUser,...existingData];
       localStorage.setItem("addedUsers", JSON.stringify(updatedData));
       queryClient.invalidateQueries({ queryKey: ["users"] });
       toast.success('User Added Successfully',{

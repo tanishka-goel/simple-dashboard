@@ -13,6 +13,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { ThemeContext } from "../context/ThemeProvider";
 import { logout } from "../features/authSlice";
+import LogoutModal from "../components/modals/LogoutModal";
 
 const adminpages = [
   { name: "Dashboard", route: "/dashboard", icon: <LayoutDashboard /> },
@@ -29,6 +30,7 @@ const Sidebar = ({ isCollapsed, onToggle, onMobileClose, isMobile }) => {
   const { user } = useSelector((state) => state.auth);
   const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
+  const [openLogoutModal, setOpenLogOutModal] = useState(false)
 
   const handleLogout = () => {
     dispatch(logout());
@@ -71,9 +73,17 @@ const Sidebar = ({ isCollapsed, onToggle, onMobileClose, isMobile }) => {
           </button>
         )}
 
-        <button onClick={handleLogout} className="sidebar-logout-btn">
+        <button onClick={()=>setOpenLogOutModal(true)} className="sidebar-logout-btn">
           <LogOut />
         </button>
+
+        {openLogoutModal && (
+          <LogoutModal
+          user={user}
+          onClose={()=>setOpenLogOutModal(false)}
+          onConfirm={handleLogout}
+          />
+        )}
       </div>
     </div>
   );

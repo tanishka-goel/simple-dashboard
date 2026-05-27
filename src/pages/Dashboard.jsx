@@ -157,6 +157,7 @@ const Dashboard = () => {
         <div className="filter-field">
           <label htmlFor="chart-scope" style={{color: theme==='light'?"#000":"#F8F9FA"}}>Charts</label>
           <select
+          className="sort-fn"
             id="chart-scope"
             value={chartScope}
             onChange={(event) => dispatch(setChartScope(event.target.value))}
@@ -169,6 +170,7 @@ const Dashboard = () => {
         <div className="filter-field">
           <label style={{color: theme==='light'?"#000":"#fff"}} htmlFor="date-from">Birth date from</label>
           <input
+          className="date-field"
             id="date-from"
             type="date"
             value={dateRange.from}
@@ -180,6 +182,7 @@ const Dashboard = () => {
         <div className="filter-field">
           <label style={{color: theme==='light'?"#000":"#fff"}} htmlFor="date-to">Birth date to</label>
           <input
+className="date-field"
             id="date-to"
             type="date"
             value={dateRange.to}
@@ -191,7 +194,7 @@ const Dashboard = () => {
 
         <div className="filter-field search-field">
           <label style={{color: theme==='light'?"#000":"#fff"}} htmlFor="">Search</label>
-          <Search onSearchChange={setSearchTerm} />
+          <Search placeholder="Search by title" onSearchChange={setSearchTerm} />
         </div>
         </div>
       </div>

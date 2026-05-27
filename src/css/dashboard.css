@@ -59,16 +59,32 @@
   box-sizing: border-box;
 }
 
+ .dark .sort-fn{
+background-color:#0e2d71;
+border: 1px solid white;
+color: white;
+}
+
 .filter-field.search-field {
   min-width: 200px;
 }
 
-/* .full-w {
-  min-width: 100vh;
-} */
+.dark .date-field{
+  background-color:#0e2d71;
+  color: white;
+}
 
 .search-input {
   width: 90%;
+}
+
+.dark .search-input{
+  background-color: #0e2d71;
+  color: white;
+}
+
+.dark .search-input::placeholder{
+  color: white;
 }
 
 .loading-skel{

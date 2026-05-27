@@ -18,6 +18,12 @@ gap: 10px;
   border-radius: 30px;
 }
 
+.dark .sort-func{
+  background-color: #0e2d71;
+  border: 1px solid white;
+  color: white;
+}
+
 .count{
  margin-top: 25px ;
 }
@@ -30,6 +36,11 @@ gap: 10px;
     background-color: #e8ebf0;
     padding: 10px;
     border-radius: 15px;
+}
+
+.dark .report-filter-bar{
+  background: linear-gradient(45deg,#061536, #0e2d71, #061536);
+  color: white;
 }
 
 .user-table{
@@ -96,6 +107,19 @@ border-radius: 25px;
    background: linear-gradient(45deg, #971435, #061536);
 
 
+}
+
+.pfp-user{
+  height: 30px;
+  object-fit: fill;
+  border-radius: 50%;
+  background-color: white;
+  padding: 3px;
+  border: 1px solid black;
+}
+
+.dark .pfp-user{
+   background: linear-gradient(45deg, #1a1497, #061536);
 }
 
 .user-grid {

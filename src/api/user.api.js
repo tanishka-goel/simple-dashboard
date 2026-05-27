@@ -8,7 +8,7 @@ export async function getUsers() {
   const apiUsers = response.data.users.filter(u => !deletedIds.includes(u.id));
   const localUsers = JSON.parse(localStorage.getItem("addedUsers") || "[]");
 
-  return [...apiUsers, ...localUsers];
+  return [...localUsers,...apiUsers ];
 }
 
 export async function addUsers(newdata) {

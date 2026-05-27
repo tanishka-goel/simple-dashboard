@@ -1,21 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDebounce } from "../hooks/useDebounce";
 import "../css/dashboard.css"
+import { ThemeContext } from "../context/ThemeProvider";
 
-const Search = ({ onSearchChange }) => {
+const Search = ({ onSearchChange, placeholder="Search" }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedTerm = useDebounce(searchTerm, 500);
+  const {theme} = useContext(ThemeContext)
 
   useEffect(() => {
     onSearchChange(debouncedTerm);
   }, [debouncedTerm, onSearchChange]);
 
   return (
-  <div>
+  <div className={`${theme}`}>
       <input
+     
       className="search-input"
         type="text"
-        placeholder="Search"
+        placeholder={placeholder}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
