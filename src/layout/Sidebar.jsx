@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ThemeContext } from "../context/ThemeProvider";
 import { logout } from "../features/authSlice";
 import LogoutModal from "../components/modals/LogoutModal";
+import { createPortal } from "react-dom";
 
 const adminpages = [
   { name: "Dashboard", route: "/dashboard", icon: <LayoutDashboard /> },
@@ -77,12 +78,13 @@ const Sidebar = ({ isCollapsed, onToggle, onMobileClose, isMobile }) => {
           <LogOut />
         </button>
 
-        {openLogoutModal && (
+        {openLogoutModal && createPortal(
           <LogoutModal
           user={user}
           onClose={()=>setOpenLogOutModal(false)}
           onConfirm={handleLogout}
-          />
+          />,
+          document.body
         )}
       </div>
     </div>
