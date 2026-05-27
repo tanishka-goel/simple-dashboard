@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { addUsers, deleteUser, getUsers } from "../api/user.api";
 import { toast } from "react-toastify";
 
-export const useUsesrs = () => {
+export const useUsers = () => {
   return useQuery({
     queryKey: ["users"],
     queryFn: getUsers,

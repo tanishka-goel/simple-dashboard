@@ -1,17 +1,16 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { useUsesrs } from "../queries/users.query";
+import { useUsers } from "../queries/users.query";
 import "../css/userdetails.css";
 import { Cake, CircleUserRound, Earth, GraduationCap, Mail, MapPin, MapPinned, Phone, User } from "lucide-react";
 import { ThemeContext } from "../context/ThemeProvider";
 
 const UserDetails = () => {
   const { id } = useParams();
-  const { data: users } = useUsesrs();
+  const { data: users } = useUsers();
   const {theme} = useContext(ThemeContext)
 
   const currUser = users?.find((u) => u.id === Number(id));
-  console.log(currUser);
   return (
     <div className={`main-user-div ${theme}`}>
       <h1>User Profile</h1>

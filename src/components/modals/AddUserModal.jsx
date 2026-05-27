@@ -5,7 +5,7 @@ import { useAddUsers } from "../../queries/users.query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { userSchema } from "../../validation/userSchema";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { ThemeContext } from "../../context/ThemeProvider";
 
 export const AddUserModal = ({ closeModal }) => {
@@ -41,12 +41,6 @@ export const AddUserModal = ({ closeModal }) => {
     addUser(newUser);
 
     closeModal();
-    toast.success("Form Submitted Successfully", {
-      autoClose: 2000,
-      closeOnClick: true,
-      pauseOnHover: true,
-      theme: "light",
-    });
   };
 
   return (

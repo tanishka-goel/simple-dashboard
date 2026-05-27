@@ -50,21 +50,6 @@ const AppRoutes = () => {
                   </Suspense>
                 }
               />
-              {/* <Route
-                path="reports"
-                element={
-                  <Suspense
-                    fallback={
-                      <div>
-                        <FilterSkeleton /> <br />
-                        <TableSkeleton />
-                      </div>
-                    }
-                  >
-                    <LazyReports />
-                  </Suspense>
-                }
-              /> */}
               <Route
                 path="settings"
                 element={

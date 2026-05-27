@@ -1,7 +1,7 @@
 import "../css/dashboard.css";
 import { useContext, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useUsesrs } from "../queries/users.query";
+import { useUsers } from "../queries/users.query";
 import { SimpleLineChart } from "../components/charts/LineCharts";
 import { SimpleBarChart } from "../components/charts/BarGraph";
 import { useProducts } from "../queries/products.query";
@@ -35,7 +35,7 @@ const Dashboard = () => {
   const {theme} = useContext(ThemeContext)
   const dispatch = useDispatch();
   const { chartScope, dateRange } = useSelector(selectFilters);
-  const { data: users, isLoading: userLoading, error: userError } = useUsesrs();
+  const { data: users, isLoading: userLoading, error: userError } = useUsers();
   const {
     data: products,
     isLoading: productsLoading,
@@ -149,7 +149,6 @@ const Dashboard = () => {
 
   return (
     <div className="main-div">
-      {/* <FilterSkeleton/> */}
       <div className={`filter-bar ${theme}`}>
         <div className="all-fields">
 
@@ -199,7 +198,7 @@ className="date-field"
         </div>
       </div>
 
-      {/* <ChartSkeleton/> */}
+      
 
      
 

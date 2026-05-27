@@ -36,7 +36,7 @@ const Sidebar = ({ isCollapsed, onToggle, onMobileClose, isMobile }) => {
     dispatch(logout());
   };
 
-  const pages = user.role === "admin" ? adminpages : userpages;
+  const pages = user?.role === "admin" ? adminpages : userpages;
   return (
     <div className={`sidebar ${isMobile ? "mobile-open" : ""}`}>
       <h2 className={`sidebar-header ${isMobile ? "mobile-open" : ""}`}>

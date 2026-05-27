@@ -1,9 +1,9 @@
 import React, { useContext, useMemo, useState } from "react";
 import "../css/reports.css";
-import { useUsesrs, useDeleteUsers } from "../queries/users.query";
+import {  useDeleteUsers, useUsers } from "../queries/users.query";
 import Search from "../components/Search";
 import Table from "../components/Table";
-import { Edit, Trash, Trash2 } from "lucide-react";
+import {Trash2 } from "lucide-react";
 import { AddUserModal } from "../components/modals/AddUserModal";
 import { ThemeContext } from "../context/ThemeProvider";
 import UserCard from "../components/UserCard";
@@ -16,7 +16,7 @@ import DeleteModal from "../components/modals/DeleteModal";
 import ProfileModal from "../components/modals/ProfileModal";
 
 const Settings = () => {
-  const { data: users, isLoading: usersLoading } = useUsesrs();
+  const { data: users, isLoading: usersLoading } = useUsers();
   const { mutate: deleteUser } = useDeleteUsers();
   const [searchTerm, setSearchTerm] = useState("");
   const [openDeleteModal, setOpenDeleteModal] = useState(null);

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "../css/login.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { loginUser } from "../api/auth.api";
 import { loginthunk } from "../features/authSlice";
 import { Eye, EyeOff, Lock, User } from "lucide-react";
 import { toast } from "react-toastify";
@@ -11,7 +10,6 @@ import { toast } from "react-toastify";
 export const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
   const { user, isAuthenticated, isLoading, error } = useSelector(
     (state) => state.auth,
   );

@@ -5,8 +5,8 @@ import { ThemeContext } from "../../context/ThemeProvider";
 const ProfileModal = ({ user, onClose }) => {
   const { theme } = useContext(ThemeContext);
   return (
-    <div className={`modal-overlay ${theme}`}>
-      <div className="modal">
+    <div className={`modal-profile-overlay ${theme}`}>
+      <div className="profile-modal">
         <div className="pfp-section">
           <h2>User Profile</h2>
           <button className="close-pfp-btn" onClick={onClose}>X</button>

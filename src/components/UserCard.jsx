@@ -8,10 +8,6 @@ const UserCard = ({ user }) => {
       <p className="name">
         {user.firstName} {user.lastName || user.title} 
       </p>
-      {/* <p style={{ color: user.gender === "female" ? "pink" : "blue", 
-        backgroundColor: user.gender === "female" ? "red" : "green" }}>
-        {user.gender}
-      </p> */}
       <p>{user.email}</p>
       <p>{user.university}</p>
     </div>

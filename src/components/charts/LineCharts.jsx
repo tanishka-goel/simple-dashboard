@@ -36,6 +36,7 @@ export const SimpleLineChart = ({
               position="insideLeft"
               style={{ textAnchor: "middle" }}
             />
+            
           </YAxis>
           <Tooltip
             labelStyle={{
