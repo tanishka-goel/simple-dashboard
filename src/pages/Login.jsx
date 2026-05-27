@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "../css/login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import { loginthunk } from "../features/authSlice";
 import { Eye, EyeOff, Lock, User } from "lucide-react";
 import { toast } from "react-toastify";

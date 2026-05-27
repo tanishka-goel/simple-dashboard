@@ -69,7 +69,7 @@ const Dashboard = () => {
 
       return true;
     });
-  }, [users, dateRange.from, dateRange.to, invalidDates]);
+  }, [users, dateRange.from, dateRange.to]);
 
   const productCategoryData = useMemo(
     () => transformProductsToCategoryData(products),
@@ -206,6 +206,7 @@ const Dashboard = () => {
               Birth date to
             </label>
             <input
+             id="date-to"
               className="date-field"
               type="date"
               value={dateRange.to}
@@ -222,7 +223,7 @@ const Dashboard = () => {
 
                 dispatch(
                   setDateRange({
-                    from: to,
+                    to: value,
                   }),
                 );
               }}

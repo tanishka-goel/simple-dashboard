@@ -19,7 +19,7 @@ const Profile = () => {
           <img src={user?.image} alt={user?.firstName+" "+user?.lastName} />
           <div>
             <p className="name">
-              {user?.firstName} {user.lastName} {user.maidenName}
+              {user?.firstName} {user?.lastName} {user?.maidenName}
             </p>
             <div className="tags">
               <p>{user?.role}</p>
@@ -31,15 +31,15 @@ const Profile = () => {
         </div>
         <div className="row row2">
           <div className="box">
-            <p>{user.age}</p>
+            <p>{user?.age}</p>
             <p>AGE</p>
           </div>
           <div className="box">
-            <p>{user.bloodGroup}</p>
+            <p>{user?.bloodGroup}</p>
             <p>BLOOD GROUP</p>
           </div>
           <div className="box">
-            <p>{user.username}</p>
+            <p>{user?.username}</p>
             <p>USERNAME</p>
           </div>
         </div>
@@ -51,7 +51,7 @@ const Profile = () => {
                 <p className="detail-heading">FULL NAME</p>
                 <p className="detail-detail">
                   {" "}
-                  {user?.firstName} {user.lastName} {user.maidenName}
+                  {user?.firstName} {user?.lastName} {user?.maidenName}
                 </p>
               </div>
               <div className="user-detail-div">
