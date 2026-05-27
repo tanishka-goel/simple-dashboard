@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from '../../context/ThemeProvider';
-import "../../css/deletemodal.css"
+import "../../css/logoutmodal.css"
 
 const LogoutModal = ({ user, onConfirm, onClose }) => {
    const { theme } = useContext(ThemeContext);
     return (
-      <div className={`modal-overlay ${theme}`}>
-        <div className="modal">
+      <div className={`logout-modal-overlay ${theme}`}>
+        <div className="logout-modal">
           <p>
             Are you sure you want to sign out{" "}
             <strong>
@@ -14,13 +14,13 @@ const LogoutModal = ({ user, onConfirm, onClose }) => {
             </strong> ?
           </p>
   
-          <div className="modal-actions">
+          <div className="logout-modal-actions">
             <button className="cancel-btn" onClick={onClose}>
               Cancel
             </button>
   
             <button className="confirm-btn" onClick={onConfirm}>
-              Logo out
+              Log out
             </button>
           </div>
         </div>

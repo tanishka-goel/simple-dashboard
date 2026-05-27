@@ -41,10 +41,10 @@ export const CHART_COLORS = {
 export const chartList = ({
   showUsers,
   showProducts,
-  getBlooadGroups,
+  bloodGroups,
   getbmi,
   userAgeData,
-  getCountryStats,
+  getStateStats,
   getGenderRoles,
   productCategoryData,
   getShippingInfo,
@@ -61,7 +61,7 @@ export const chartList = ({
           <SimplePieChart
             colors={CHART_COLORS.default}
             label="User Blood Groups"
-            data={getBlooadGroups}
+            data={bloodGroups}
           />
         ),
       },
@@ -97,7 +97,7 @@ export const chartList = ({
         element: (
           <SimpleBarChart
             label={"Users by State"}
-            data={getCountryStats}
+            data={getStateStats}
             xlabel={"States"}
             ylabel={"No. of Users"}
             color="#3b68ac"

@@ -11,7 +11,7 @@ import {
   getBMI,
   getGenderByRole,
   getShippingTime,
-  getUserByCountry,
+  getUserByState,
   transformProductsToCategoryData,
   transformUsersByAgeGroup,
 } from "../utils/GraphTransforms";
@@ -30,9 +30,10 @@ import { FilterSkeleton } from "../components/skeletons/FilterSkeleton";
 import { ThemeContext } from "../context/ThemeProvider";
 import StatCardRow from "../components/StatCardRow";
 import StatCardSkeleton from "../components/skeletons/StatCardSkeleton";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
-  const {theme} = useContext(ThemeContext)
+  const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
   const { chartScope, dateRange } = useSelector(selectFilters);
   const { data: users, isLoading: userLoading, error: userError } = useUsers();
@@ -42,16 +43,18 @@ const Dashboard = () => {
     error: productError,
   } = useProducts();
 
-  const userlen = users?.length
-  const prodlen = products?.length
-  const femlen = users?.filter((user)=> user?.gender==="female")?.length
-  const malelen = users?.filter((user)=> user?.gender==="male")?.length
+  const userlen = users?.length;
+  const prodlen = products?.length;
+  const femlen = users?.filter((user) => user?.gender === "female")?.length;
+  const malelen = users?.filter((user) => user?.gender === "male")?.length;
 
   const showUsers = chartScope !== "products";
   const showProducts = chartScope !== "users";
 
+ 
+
   const filteredUsers = useMemo(() => {
-    if (!users) return [];
+    if (!users ) return [];
 
     const fromDate = dateRange.from ? new Date(dateRange.from) : null;
     const toDate = dateRange.to ? new Date(dateRange.to) : null;
@@ -66,7 +69,7 @@ const Dashboard = () => {
 
       return true;
     });
-  }, [users, dateRange.from, dateRange.to]);
+  }, [users, dateRange.from, dateRange.to, invalidDates]);
 
   const productCategoryData = useMemo(
     () => transformProductsToCategoryData(products),
@@ -80,14 +83,14 @@ const Dashboard = () => {
     () => getAveragePriceByCategory(products),
     [products],
   );
-  const getBlooadGroups = useMemo(
+  const bloodGroups = useMemo(
     () => getBloodGroups(filteredUsers),
     [filteredUsers],
   );
   const getShippingInfo = useMemo(() => getShippingTime(products), [products]);
   const getbmi = useMemo(() => getBMI(filteredUsers), [filteredUsers]);
-  const getCountryStats = useMemo(
-    () => getUserByCountry(filteredUsers),
+  const getStateStats = useMemo(
+    () => getUserByState(filteredUsers),
     [filteredUsers],
   );
   const getGenderRoles = useMemo(
@@ -101,10 +104,10 @@ const Dashboard = () => {
       chartList({
         showUsers,
         showProducts,
-        getBlooadGroups,
+        bloodGroups,
         getbmi,
         userAgeData,
-        getCountryStats,
+        getStateStats,
         getGenderRoles,
         productCategoryData,
         getShippingInfo,
@@ -113,10 +116,10 @@ const Dashboard = () => {
     [
       showUsers,
       showProducts,
-      getBlooadGroups,
+      bloodGroups,
       getbmi,
       userAgeData,
-      getCountryStats,
+      getStateStats,
       getGenderRoles,
       productCategoryData,
       getShippingInfo,
@@ -139,7 +142,7 @@ const Dashboard = () => {
     return (
       <div style={{ padding: "20px" }}>
         <FilterSkeleton />
-         <StatCardSkeleton/>
+        <StatCardSkeleton />
         <ChartSkeleton />
         <ChartSkeleton />
       </div>
@@ -151,58 +154,102 @@ const Dashboard = () => {
     <div className="main-div">
       <div className={`filter-bar ${theme}`}>
         <div className="all-fields">
+          <div className="filter-field">
+            <label
+              htmlFor="chart-scope"
+              style={{ color: theme === "light" ? "#000" : "#F8F9FA" }}
+            >
+              Charts
+            </label>
+            <select
+              className="sort-fn"
+              id="chart-scope"
+              value={chartScope}
+              onChange={(event) => dispatch(setChartScope(event.target.value))}
+            >
+              <option value="all">All charts</option>
+              <option value="users">User charts</option>
+              <option value="products">Product charts</option>
+            </select>
+          </div>
+          <div className="filter-field">
+            <label
+              style={{ color: theme === "light" ? "#000" : "#fff" }}
+              htmlFor="date-from"
+            >
+              Birth date from
+            </label>
+            <input
+              className="date-field"
+              type="date"
+              value={dateRange.from}
+              onChange={(event) => {
+                const value = event.target.value;
+                if (dateRange.to && new Date(value) > new Date(dateRange.to)) {
+                  toast.warning('"From date" cannot be after "To date"');
+                  return;
+                }
 
-        
-        <div className="filter-field">
-          <label htmlFor="chart-scope" style={{color: theme==='light'?"#000":"#F8F9FA"}}>Charts</label>
-          <select
-          className="sort-fn"
-            id="chart-scope"
-            value={chartScope}
-            onChange={(event) => dispatch(setChartScope(event.target.value))}
-          >
-            <option value="all">All charts</option>
-            <option value="users">User charts</option>
-            <option value="products">Product charts</option>
-          </select>
-        </div>
-        <div className="filter-field">
-          <label style={{color: theme==='light'?"#000":"#fff"}} htmlFor="date-from">Birth date from</label>
-          <input
-          className="date-field"
-            id="date-from"
-            type="date"
-            value={dateRange.from}
-            onChange={(event) =>
-              dispatch(setDateRange({ from: event.target.value }))
-            }
-          />
-        </div>
-        <div className="filter-field">
-          <label style={{color: theme==='light'?"#000":"#fff"}} htmlFor="date-to">Birth date to</label>
-          <input
-className="date-field"
-            id="date-to"
-            type="date"
-            value={dateRange.to}
-            onChange={(event) =>
-              dispatch(setDateRange({ to: event.target.value }))
-            }
-          />
-        </div>
+                dispatch(
+                  setDateRange({
+                    from: value,
+                  }),
+                );
+              }}
+            />
+          </div>
+          <div className="filter-field">
+            <label
+              style={{ color: theme === "light" ? "#000" : "#fff" }}
+              htmlFor="date-to"
+            >
+              Birth date to
+            </label>
+            <input
+              className="date-field"
+              type="date"
+              value={dateRange.to}
+              onChange={(event) => {
+                const value = event.target.value;
+                if (
+                  dateRange.from &&
+                  new Date(value) < new Date(dateRange.from)
+                ) {
+                  toast.warning('"From date" cannot be after "To date"');
 
-        <div className="filter-field search-field">
-          <label style={{color: theme==='light'?"#000":"#fff"}} htmlFor="">Search</label>
-          <Search placeholder="Search by title" onSearchChange={setSearchTerm} />
-        </div>
+                  return;
+                }
+
+                dispatch(
+                  setDateRange({
+                    from: to,
+                  }),
+                );
+              }}
+            />
+          </div>
+
+          <div className="filter-field search-field">
+            <label
+              style={{ color: theme === "light" ? "#000" : "#fff" }}
+              htmlFor=""
+            >
+              Search
+            </label>
+            <Search
+              placeholder="Search by title"
+              onSearchChange={setSearchTerm}
+            />
+          </div>
         </div>
       </div>
 
-      
-
-     
-
-      <StatCardRow products={prodlen} male={malelen} female={femlen} users={userlen}/>
+      <StatCardRow
+        products={prodlen}
+        male={malelen}
+        female={femlen}
+        users={userlen}
+      />
 
       <div className="eight">
         {currdata?.map((chart) => (
@@ -231,8 +278,6 @@ className="date-field"
           Next
         </button>
       </div>
-
-    
     </div>
   );
 };

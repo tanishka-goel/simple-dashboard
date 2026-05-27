@@ -93,7 +93,7 @@ export const getBMI = (users) => {
   const bmicats = {
     underweight: 0,
     healthy: 0,
-    overwieght: 0,
+    overweight: 0,
     obese: 0,
   };
 
@@ -107,7 +107,7 @@ export const getBMI = (users) => {
     else if (bmi >= 18.5 && bmi <= 24.9) {
       bmicats.healthy++;
     } else if (bmi >= 25 && bmi <= 29.9) {
-      bmicats.overwieght++;
+      bmicats.overweight++;
     } else {
       bmicats.obese++;
     }
@@ -119,21 +119,21 @@ export const getBMI = (users) => {
   }));
 };
 
-export const getUserByCountry = (users) => {
+export const getUserByState = (users) => {
   if (!users) return [];
 
-  const countryMap = {};
+  const stateMap = {};
 
   users.forEach((user) => {
-    if (!countryMap[user?.address?.city]) {
-      countryMap[user?.address?.city] = 0;
+    if (!stateMap[user?.address?.state]) {
+      stateMap[user?.address?.state] = 0;
     }
-    countryMap[user?.address?.city] += 1;
+    stateMap[user?.address?.state] += 1;
   });
 
-  return Object.keys(countryMap).map((key) => ({
+  return Object.keys(stateMap).map((key) => ({
     name: key,
-    value: countryMap[key],
+    value: stateMap[key],
   }));
 };
 
@@ -150,7 +150,7 @@ export const transformUsersByAgeGroup = (users) => {
   users.forEach((user) => {
     const age = user.age;
 
-    if (age <= 25) groups["18-25"]++;
+    if (age>=18 && age <= 25) groups["18-25"]++;
     else if (age <= 35) groups["26-35"]++;
     else if (age <= 50) groups["36-50"]++;
     else groups["50+"]++;

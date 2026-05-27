@@ -1,8 +1,9 @@
 import axios from "axios";
+import BaseApi from "./base.api";
 
 export async function loginUser({username,password}) {
-  const response = await axios.post(
-    "https://dummyjson.com/auth/login",
+  const response = await BaseApi.post(
+    "/auth/login",
     {
       username,
       password,
@@ -18,7 +19,7 @@ export async function loginUser({username,password}) {
 }
 
 export async function fetchCurrUser(token) {
-  const response = await axios.get("https://dummyjson.com/auth/me", {
+  const response = await BaseApi.get("/auth/me", {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response.data;

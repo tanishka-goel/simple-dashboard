@@ -20,7 +20,7 @@ const AppRoutes = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />}/>
-            <Route index element={<Navigate to="dashboard" replace />} />
+          
            
             <Route
               path="/"
@@ -30,6 +30,7 @@ const AppRoutes = () => {
                 </ProtectedRoutes>
               }
             >
+                <Route index element={<Navigate to="dashboard" replace />} />
                <Route path="/me" element={<Suspense fallback={<ProfileSkeleton/>}><LazyProfile/></Suspense>}/>
                <Route path="/user/:id" element={<UserDetails/>}/>
               <Route

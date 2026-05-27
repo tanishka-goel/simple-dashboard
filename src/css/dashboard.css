@@ -22,6 +22,20 @@
   border-right: 2px solid #2563eb;
 }
 
+.date-warning {
+  margin-top: 12px;
+  padding: 10px 14px;
+  color: #dc2626;
+  background: #fee2e2;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.dark .date-warning {
+  background: rgba(220, 38, 38, .15);
+  color: #ffb4b4;
+}
+
 .filter-field {
   display: flex;
   flex-direction: column;

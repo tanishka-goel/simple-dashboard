@@ -6,7 +6,12 @@ export const userSchema = z.object({
     .min(1, "Full name is required")
     .min(3, "Full name must be atleast 3 characters"),
 
-  age: z.number().int("Age must be a whole number"),
+  age: z
+  .number()
+  .int("Age must be a whole number")
+  .min(1,"Minimum Age must be 1")
+  .max(100,"Maximum age must be 100")
+  ,
 
   email: z.string().email("Email is required"),
 

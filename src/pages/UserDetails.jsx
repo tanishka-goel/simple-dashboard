@@ -4,13 +4,25 @@ import { useUsers } from "../queries/users.query";
 import "../css/userdetails.css";
 import { Cake, CircleUserRound, Earth, GraduationCap, Mail, MapPin, MapPinned, Phone, User } from "lucide-react";
 import { ThemeContext } from "../context/ThemeProvider";
+import ProfileSkeleton from "../components/skeletons/ProfileSkeleton";
+import { toast } from "react-toastify";
 
 const UserDetails = () => {
   const { id } = useParams();
-  const { data: users } = useUsers();
+  const { data: users, isLoading:userLoading, error:userError } = useUsers();
   const {theme} = useContext(ThemeContext)
 
   const currUser = users?.find((u) => u.id === Number(id));
+
+  if(userLoading) return (
+    <div>
+      <ProfileSkeleton/>
+    </div>
+  )
+
+  if(userError) return (
+    toast.error(`Error showing user details : ${userError} `)
+  )
   return (
     <div className={`main-user-div ${theme}`}>
       <h1>User Profile</h1>

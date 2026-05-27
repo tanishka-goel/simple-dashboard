@@ -25,18 +25,18 @@ export const usePagination = (charts, chartsperpage = 4) => {
   }
 };
 
-//   useEffect(() => {
-//     if (totalPages === 0) {
-//       if (currpage !== 1) {
-//         setCurrpage(1);
-//       }
-//       return;
-//     }
+  useEffect(() => {
+    if (totalPages === 0) {
+      if (currpage !== 1) {
+        setCurrpage(1);
+      }
+      return;
+    }
 
-//     if (currpage > totalPages) {
-//       setCurrpage(totalPages);
-//     }
-//   }, [currpage, totalPages]);
+    if (currpage > totalPages) {
+      setCurrpage(totalPages);
+    }
+  }, [currpage, totalPages]);
 
   return {
     currpage,
