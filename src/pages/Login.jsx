@@ -10,8 +10,7 @@ export const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user, isAuthenticated, isLoading, error } = useSelector(
-    (state) => state.auth,
-  );
+    (state) => state.auth);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -41,6 +40,14 @@ export const Login = () => {
     }
     dispatch(loginthunk({ username, password }));
   };
+
+  useEffect(()=>{
+if (error) return (
+    toast.error("Incorrect credentials. Please enter correct username and password.")
+  )
+  },[error])
+
+  
 
   return (
     <div className="login-div">
