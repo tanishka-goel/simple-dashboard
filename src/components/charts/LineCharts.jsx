@@ -25,21 +25,25 @@ export const SimpleLineChart = ({
         {label}
       </h3>
       <ResponsiveContainer width="100%" height={300}>
-      <LineChart  data={data}>
-        <XAxis dataKey="name" >
-           <Label value={xlabel} offset={-5} position="insideBottom" />
-        </XAxis>
-         <YAxis>
-          <Label
-            value={ylabel}
-            angle={-90}
-            position="insideLeft"
-            style={{ textAnchor: "middle" }}
-          />
+        <LineChart data={data}>
+          <XAxis dataKey="name">
+            <Label value={xlabel} offset={-5} position="insideBottom" />
+          </XAxis>
+          <YAxis>
+            <Label
+              value={ylabel}
+              angle={-90}
+              position="insideLeft"
+              style={{ textAnchor: "middle" }}
+            />
           </YAxis>
-        <Tooltip />
-        <Line type="monotone" dataKey="value" />
-      </LineChart>
+          <Tooltip
+            labelStyle={{
+              color: "black",
+            }}
+          />
+          <Line type="monotone" dataKey="value" />
+        </LineChart>
       </ResponsiveContainer>
     </div>
   );
