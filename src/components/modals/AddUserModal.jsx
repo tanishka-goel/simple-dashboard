@@ -25,7 +25,7 @@ export const AddUserModal = ({ closeModal }) => {
     const maxid =
       existinguser.length > 0
         ? Math.max(...existinguser?.map((u) => u.id))
-        : 208;
+        : 0;
     const newid = maxid + 1;
 
     const newUser = {

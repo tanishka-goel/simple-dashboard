@@ -1,0 +1,28 @@
+.errorpage{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 85vh;
+background-color: rgb(232, 232, 233);
+border-radius: 15px;
+gap: 15px;
+}
+
+.content{
+   display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 40vh;
+width: 60%;
+background-color: rgb(196, 196, 199);
+border-radius: 15px;
+gap: 15px; 
+padding: 14px;
+}
+
+.content p{
+    font-size: large;
+    font-weight: 600;
+}
