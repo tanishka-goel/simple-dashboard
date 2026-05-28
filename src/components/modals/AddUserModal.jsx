@@ -21,16 +21,13 @@ export const AddUserModal = ({ closeModal }) => {
   });
 
   const onSubmit = (formValues) => {
-    const existinguser = JSON.parse(localStorage.getItem("addedUsers") || "[]");
-    const maxid =
-      existinguser.length > 0
-        ? Math.max(...existinguser?.map((u) => u.id))
-        : 0;
-    const newid = maxid + 1;
+    const [first,...rest] = formValues?.fullname?.trim()?.split(" ")
 
     const newUser = {
-      id: newid,
-      firstName: formValues.fullname,
+      id: crypto.randomUUID(),
+      firstName: first,
+      lastName:rest.join(" ")||"",
+      maidenName:"",
       age: formValues.age,
       email: formValues.email,
       phone: formValues.phone,

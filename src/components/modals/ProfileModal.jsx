@@ -11,7 +11,7 @@ const ProfileModal = ({ user, onClose }) => {
           <h2>User Profile</h2>
           <button className="close-pfp-btn" onClick={onClose}>X</button>
         </div>
-        <img src={user?.image} alt="user image" height="220px" width="220px" />
+        <img src={user?.image ||"userpfp.jpeg"} className="upfp" alt="user image"  />
       </div>
     </div>
   );
