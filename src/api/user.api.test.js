@@ -1,7 +1,11 @@
-import axios from "axios";
 import { getUsers } from "./user.api";
+import BaseApi from "./base.api";
 
-jest.mock("axios");
+jest.mock("./base.api", () => ({
+  get: jest.fn(),
+  post: jest.fn(),
+  delete: jest.fn(),
+}));
 
 describe("getUsers", () => {
   test("fetches user from api", async () => {
@@ -12,7 +16,7 @@ describe("getUsers", () => {
       },
     ];
 
-    axios.get.mockResolvedValue({
+    BaseApi.get.mockResolvedValue({
       data: {
         users: mu,
       },
@@ -20,8 +24,8 @@ describe("getUsers", () => {
 
     const results = await getUsers();
 
-    expect(axios.get).toHaveBeenCalledWith(
-      "https://dummyjson.com/users"
+    expect(BaseApi.get).toHaveBeenCalledWith(
+      "/users"
     );
 
     expect(results).toEqual(mu);
@@ -48,7 +52,7 @@ describe("getUsers", () => {
     JSON.stringify(localUsers)
   );
 
-  axios.get.mockResolvedValue({
+  BaseApi.get.mockResolvedValue({
     data: {
       users: apiUsers,
     },
@@ -57,8 +61,9 @@ describe("getUsers", () => {
   const results = await getUsers();
 
   expect(results).toEqual([
-    ...apiUsers,
     ...localUsers,
+    ...apiUsers,
+    
   ]);
 });
 

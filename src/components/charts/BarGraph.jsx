@@ -1,12 +1,9 @@
 import {
-  LineChart,
-  Line,
   XAxis,
   YAxis,
   Tooltip,
   Bar,
   BarChart,
-  CartesianGrid,
   Label,
   ResponsiveContainer,
 } from "recharts";
@@ -44,7 +41,6 @@ export const SimpleBarChart = ({
   }}
           />
           <Bar
-            style={{ backgroundColor: "red" }}
             dataKey="value"
             fill={color}
             radius={[8, 8, 0, 0]}

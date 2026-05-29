@@ -7,6 +7,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 import { ThemeContext } from "../../context/ThemeProvider";
 
@@ -14,7 +15,7 @@ const StackedBarChart = ({
   data,
   label = "Bar Graph",
   xlabel = "xval",
-  ylabe = "yval",
+  ylabel = "yval",
   color,
   key1,
   key2,
@@ -25,14 +26,10 @@ const StackedBarChart = ({
     <div className="barchart">
       <h3 style={{ textAlign: "center", marginBottom: "25px" }}>{label}</h3>
 
+ <ResponsiveContainer width="100%" height={340}>
+
+
       <BarChart
-        style={{
-          width: "100%",
-          maxWidth: "700px",
-          maxHeight: "40vh",
-          aspectRatio: 1.618,
-        }}
-        responsive
         data={data}
         margin={{
           top: 20,
@@ -58,6 +55,7 @@ const StackedBarChart = ({
         <Bar dataKey={key1} stackId="a" fill="#8884d8" />
         <Bar dataKey={key2} stackId="a" fill="#3532bf" />
       </BarChart>
+       </ResponsiveContainer>
     </div>
   );
 };

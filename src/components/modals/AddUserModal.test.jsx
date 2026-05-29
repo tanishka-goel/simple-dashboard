@@ -1,10 +1,12 @@
 import { screen, render } from "@testing-library/react";
 import { AddUserModal } from "./AddUserModal";
 import userEvent from "@testing-library/user-event";
-// import { useAddUsers } from "../queries/users.query";
-// import { useAddUsers } from "../queries/users.query";
+import { useContext } from "react";
+import { ThemeContext } from "../../context/ThemeProvider";
 
-jest.mock("../queries/users.query", () => ({
+const mockTheme = { theme: "light" };
+
+jest.mock("../../queries/users.query", () => ({
   useAddUsers: () => ({
     mutate: jest.fn(),
   }),
@@ -12,7 +14,11 @@ jest.mock("../queries/users.query", () => ({
 
 describe("Addition form validation", () => {
   test("validation error for empty form", async () => {
-    render(<AddUserModal closeModal={() => {}} />);
+    render(
+      <ThemeContext.Provider value={mockTheme}>
+        <AddUserModal closeModal={() => {}} />
+      </ThemeContext.Provider>,
+    );
 
     const submit = screen.getByRole("button", {
       name: /submit/i,
@@ -20,7 +26,7 @@ describe("Addition form validation", () => {
     await userEvent.click(submit);
 
     expect(
-      await screen.findByText("Full name is required")
+      await screen.findByText("Full name is required"),
     ).toBeInTheDocument();
   });
 });

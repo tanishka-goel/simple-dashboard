@@ -21,12 +21,14 @@ const UserDetails = () => {
     </div>
   )
 
-  if(!currUser) return <UserNotFound/>
+  
 
   if (userError) {
   toast.error(`Error showing user details: ${userError}`);
   return <p>Error loading user details.</p>;
 }
+
+if(!currUser) return <UserNotFound/>
 
   return (
     <div className={`main-user-div ${theme}`}>

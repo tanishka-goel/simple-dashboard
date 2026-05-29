@@ -1,21 +1,19 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useUsers } from "../queries/users.query";
 import { Frown } from "lucide-react";
-import "../css/pages/usernotfound.css"
+import "../css/pages/usernotfound.css";
 
 const UserNotFound = () => {
   const { id } = useParams();
 
   return (
     <div className="errorpage">
-        <div className="content">
-<Frown size={65} />
-      <p>Uh Oh!</p>
-      <h2>User #{id} not found</h2>
-      <p>This user doesn't exist.</p>
-        </div>
-      
+      <div className="content">
+        <Frown size={65} />
+        <p>Uh Oh!</p>
+        <h2>User #{id} not found</h2>
+        <p>This user doesn't exist.</p>
+      </div>
     </div>
   );
 };

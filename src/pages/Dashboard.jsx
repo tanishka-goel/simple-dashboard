@@ -15,8 +15,6 @@ import {
   transformProductsToCategoryData,
   transformUsersByAgeGroup,
 } from "../utils/GraphTransforms";
-import SimplePieChart from "../components/charts/PieChart";
-import StackedBarChart from "../components/charts/StackedBarChart";
 import {
   selectFilters,
   setChartScope,
